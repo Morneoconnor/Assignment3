@@ -37,6 +37,7 @@ public class TestProgram {
     public void CheckEquality() throws Exception
     {
         Person personObj = new Person("Morne");
+
         Alien alienObj = new Alien("Morne");
         assertSame(personObj.getName(),alienObj.getName());
         assertThat("testing if object is the same",personObj.DisplayName("Morne"),is(alienObj.DisplayName("Morne")));

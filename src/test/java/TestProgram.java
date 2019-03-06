@@ -1,54 +1,35 @@
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import static jdk.nashorn.internal.objects.NativeRegExp.test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class TestProgram {
+    private PersonModel personModelObj;
+    private IPerson personObj;
+
     public TestProgram()
     {
 
     }
-    @Test
-    public void getName() throws Exception
+    @Before
+    public void SetUp() throws Exception
     {
-        Person personObj = new Person("Morne");
-        assertEquals("Morne",personObj.getName());
-    }
-    @Test
-    public void DisplayMessageTest() throws Exception
-    {
-        Person personObj = new Person();
-        assertEquals("Hi Morne",personObj.DisplayName("Morne"));
-    }
-    @Test
-    public void GetNumberOfPersons() throws Exception
-    {
-        Person personObj = new Person();
-        assertEquals(1,personObj.NumberOfPersons());
-    }
-    @Test(expected = NullPointerException.class)
-    public void GetNumber() throws Exception
-    {
-        Person personObj = null;
-        personObj.getName();
+        personModelObj = new PersonModel();
     }
     @Test(timeout = 100)
-    public void CheckEquality() throws Exception
+    public void TestRealPerson() throws Exception
     {
-        Person personObj = new Person("Morne");
-        Alien alienObj = new Alien("Morne");
-        assertSame(personObj.getName(),alienObj.getName());
-        assertThat("testing if object is the same",personObj.DisplayName("Morne"),is(alienObj.DisplayName("Morne")));
+        personObj = new Person();
+        assertEquals("Morne",personObj.PersonName());
     }
-    @Ignore
     @Test(timeout = 100)
-    public void CheckInEquality() throws Exception
+    public void TestWorkExperience() throws Exception
     {
-        Person personObj = new Person("Morne");
-        Alien alienObj = new Alien("Bob");
-        assertNotSame(personObj.getName(),alienObj.getName());
-        assertThat("testing if object is the same",personObj.DisplayName("Morne"),is(alienObj.DisplayName("Morne")));
+        personObj = new Person();
+        assertEquals(2,personObj.WorkExperience());
     }
 
 }

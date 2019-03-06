@@ -1,26 +1,17 @@
-public class Person {
-    private String name;
-    private static int personCounter;
-    public Person()
+public class Person implements IPerson{
+    PersonModel obj = new PersonModel();
+
+    public String PersonName()
     {
-        personCounter++;
-    }
-    public Person(String name)
-    {
-        this.name = name;
+        String name = "Morne";
+        obj.setName(name);
+        return obj.getName();
 
     }
-    public String getName() {
-        return name;
-    }
-    public String DisplayName(String name)
+    public int WorkExperience()
     {
-        return "Hi " + name;
+        int years = 2;
+        obj.setYears(years);
+        return obj.getYears();
     }
-    public static int NumberOfPersons()
-    {
-        return personCounter;
-    }
-
-
 }
